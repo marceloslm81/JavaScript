@@ -42,6 +42,61 @@ body {
     padding: 0 20px;
 }
 
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition-speed);
+    text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+}
+
+.logo::before {
+    content: "✨";
+    font-size: 1.2em;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform var(--transition-speed);
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.6);
+}
+
+.logo:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 15px rgba(3, 218, 198, 0.7);
+    transform: translateY(-2px);
+}
+
+.logo:hover::after {
+    transform: scaleX(1);
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1) rotate(0deg);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.1) rotate(180deg);
+    }
+}
+
 .section-padding {
     padding: 80px 0;
 }
@@ -170,7 +225,7 @@ h3 {
 
 /* --- Cabeçalho (Header) --- */
 .main-header {
-    background-color: rgba(18, 18, 18, 0.9); /* Fundo semi-transparente */
+    background-color: rgba(18, 18, 18, 0.95); /* Fundo mais opaco */
     padding: 15px 0;
     position: fixed;
     width: 100%;
@@ -178,7 +233,8 @@ h3 {
     left: 0;
     z-index: 1000;
     box-shadow: var(--box-shadow-dark);
-    backdrop-filter: blur(8px); /* Efeito esfumaçado no fundo */
+    backdrop-filter: blur(10px); /* Efeito esfumaçado mais intenso */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .main-header .container {
@@ -253,7 +309,7 @@ h3 {
 
 /* --- Seção Hero --- */
 .hero-section {
-    background: url('../images/hero-background.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -261,41 +317,154 @@ h3 {
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding-top: 100px; /* Espaço para o header fixo */
 }
 
-/* Overlay com efeito esfumaçado */
-.hero-section::before {
-    content: '';
+.hero-background {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Escurece a imagem */
-    backdrop-filter: blur(3px); /* Leve esfumaçado na imagem */
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23BB86FC" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(187, 134, 252, 0.1) 0%, rgba(3, 218, 198, 0.1) 100%);
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: white;
-    max-width: 800px;
-    padding: 20px;
-    animation: fadeInScale 1.5s ease-out forwards; /* Animação de entrada */
+    max-width: 1000px;
+    padding: 40px 20px;
+    animation: fadeInScale 1.5s ease-out forwards;
+    margin-top: 20px; /* Espaço adicional no topo */
+}
+
+.hero-badge {
+    margin-bottom: 40px;
+    margin-top: 0px;
+}
+
+.hero-badge span {
+    background: var(--gradient-1);
+    color: var(--darker-bg);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.4);
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .hero-content h1 {
     font-size: 4.5em;
     margin-bottom: 20px;
-    text-shadow: 0 0 25px rgba(3, 218, 198, 0.8); /* Brilho forte */
-    line-height: 1.1;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+.hero-content h1 .highlight {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(187, 134, 252, 0.5);
 }
 
 .hero-content .slogan {
     font-size: 1.8em;
-    color: var(--primary-color);
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-shadow: 0 0 15px rgba(3, 218, 198, 0.4);
+}
+
+.hero-description {
+    font-size: 1.2em;
+    color: var(--text-medium);
     margin-bottom: 40px;
-    text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: 2px solid #25D366;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    border-color: #128C7E;
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+    transform: translateY(-3px);
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-medium);
+    font-size: 1em;
+    transition: all var(--transition-speed);
+}
+
+.feature-item i {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.feature-item:hover {
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+.feature-item:hover i {
+    color: var(--secondary-color);
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(187, 134, 252, 0.4);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(187, 134, 252, 0.8);
+    }
 }
 
 /* --- Seção Sobre Nós --- */
@@ -643,7 +812,7 @@ h3 {
     gap: 20px;
 }
 .social-icons a {
-    font-size: 1.8em;
+    font-size: 2.9em;
     color: var(--text-light);
     transition: all var(--transition-speed);
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
@@ -999,6 +1168,24 @@ color: var(--secondary-color);
     .hero-content .slogan {
         font-size: 1.3em;
     }
+    .hero-description {
+        font-size: 1.1em;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-features {
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .logo::before {
+        font-size: 1em;
+    }
 
     /* Menu Responsivo */
     .main-nav .nav-list {
@@ -1082,6 +1269,23 @@ color: var(--secondary-color);
     .hero-content .slogan {
         font-size: 1.1em;
     }
+    .hero-description {
+        font-size: 1em;
+    }
+    .hero-badge span {
+        font-size: 0.6em;
+        padding: 6px 15px;
+    }
+    .hero-features {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .logo::before {
+        font-size: 0.9em;
+    }
     .btn {
         padding: 12px 25px;
         font-size: 0.9em;
@@ -1129,7 +1333,7 @@ color: var(--secondary-color);
 .modal-content h2 {
     color: var(--secondary-color);
     margin-bottom: 30px;
-    font-size: 2.5em;
+    font-size: 2.0em;
     text-shadow: 0 0 15px rgba(3, 218, 198, 0.6);
 }
 
@@ -1138,10 +1342,11 @@ color: var(--secondary-color);
     font-size: 40px;
     font-weight: bold;
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 1px;
+    right: 5px;
     cursor: pointer;
     transition: color var(--transition-speed);
+    z-index: 1000;
 }
 
 .close-button:hover,
@@ -1162,7 +1367,7 @@ color: var(--secondary-color);
     width: 100%;
     border-collapse: collapse;
     color: var(--text-light);
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 .price-table-container th,
@@ -1251,7 +1456,7 @@ color: var(--secondary-color);
         font-size: 0.9em;
     }
     .price-table-container .category-header {
-        font-size: 1.1em;
+        font-size: 1.5em;
         top: 38px; /* Ajusta a posição fixa do cabeçalho de categoria */
     }
 }

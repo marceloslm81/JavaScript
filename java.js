@@ -77,36 +77,28 @@
     // Estrutura de dados para a tabela de preços
     const servicesData = {
         'Cabelo': [
-            { name: 'Corte Feminino', price: 'R$ 80,00' },
-            { name: 'Corte Masculino', price: 'R$ 60,00' },
-            { name: 'Coloração (Raiz)', price: 'R$ 120,00' },
-            { name: 'Mechas (Comprimento Médio)', price: 'R$ 250,00' },
-            { name: 'Hidratação Profunda', price: 'R$ 90,00' },
-            { name: 'Penteado', price: 'R$ 150,00' },
-            { name: 'Escova', price: 'R$ 50,00' }
+            { name: 'Cortes Modernos', price: 'R$ 80,00' },
+            { name: 'Coloração & Mechas', price: 'R$ 250,00' },
+            { name: 'Hidratação & Tratamentos', price: 'R$ 90,00' },
+            { name: 'Penteados & Escovas', price: 'R$ 150,00' }
         ],
         'Unhas': [
-            { name: 'Manicure', price: 'R$ 40,00' },
-            { name: 'Pedicure', price: 'R$ 45,00' },
-            { name: 'Pé e Mão', price: 'R$ 80,00' },
-            { name: 'Unhas de Gel', price: 'R$ 150,00' },
-            { name: 'Manutenção de Gel', price: 'R$ 100,00' }
+            { name: 'Manicure & Pedicure', price: 'R$ 80,00' },
+            { name: 'Alongamento de Unhas', price: 'R$ 150,00' },
+            { name: 'Nail Art', price: 'R$ 100,00' },
+            { name: 'Spa dos Pés e Mãos', price: 'R$ 120,00' }
         ],
-        'Estética Facial': [
-            { name: 'Limpeza de Pele', price: 'R$ 180,00' },
-            { name: 'Drenagem Linfática Facial', price: 'R$ 100,00' },
-            { name: 'Design de Sobrancelhas', price: 'R$ 60,00' },
-            { name: 'Micropigmentação', price: 'A partir de R$ 400,00' }
+        'Botox': [
+            { name: 'Botox Facial', price: 'Sob Consulta' },
+            { name: 'Preenchimento Labial', price: 'Sob Consulta' },
+            { name: 'Harmonização Facial', price: 'Sob Consulta' },
+            { name: 'Tratamentos Anti-aging', price: 'Sob Consulta' }
         ],
-        'Estética Corporal': [
-            { name: 'Massagem Relaxante (60 min)', price: 'R$ 150,00' },
-            { name: 'Drenagem Linfática Corporal', price: 'R$ 130,00' },
-            { name: 'Depilação (Diversas Áreas)', price: 'Sob Consulta' }
-        ],
-        'Maquiagem': [
-            { name: 'Maquiagem Social', price: 'R$ 180,00' },
-            { name: 'Maquiagem Noiva', price: 'A partir de R$ 500,00' },
-            { name: 'Curso de Automaquiagem', price: 'R$ 300,00' }
+        'Progressiva': [
+            { name: 'Progressiva Capilar', price: 'R$ 200,00' },
+            { name: 'Escova Progressiva', price: 'R$ 250,00' },
+            { name: 'Tratamentos de Alisamento', price: 'R$ 250,00' },
+            { name: 'Hidratação Intensiva', price: 'R$ 120,00' }
         ]
     };
 
@@ -179,7 +171,7 @@
             }
 
             // Opção 1: Redirecionar para WhatsApp com mensagem pré-preenchida
-            const whatsappNumber = '5511999998888'; // Substitua pelo seu número de WhatsApp com DDD
+            const whatsappNumber = '5511983353410'; // Número do WhatsApp do Camarim da Lee
             let whatsappMessage = `Olá, meu nome é ${name}.`;
             whatsappMessage += `\nMeu e-mail é: ${email}.`;
             if (phone) {
